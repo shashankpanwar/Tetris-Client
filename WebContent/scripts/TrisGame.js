@@ -442,19 +442,19 @@ function showWinner(cmd, params)
 		if (iAmSpectator == true)
 		{
 			var pName = this["player" + params.get("w") + "Name"];
-			message = pName + " is the WINNER";
+			message = pName + " is the WINNER with stakes " +params.get("stake") ;
 		}
 		else
 		{
 			if (sfs.mySelf.getPlayerId(lastJoinFirst) == params.get("w"))   //  sfs.lastJoinedRoom
 			{
 				// I WON! In the next match, it will be my turn first
-				message = "You are the WINNER!"
+				message = "You are the WINNER! `Stake is " +params.get("stake")+"`" ;
 			}
 			else
 			{
 				// I've LOST! Next match I will be the second to move
-				message = "Sorry, you've LOST!"
+				message = "Sorry, you've LOST!";
 			}
 		}
 	}

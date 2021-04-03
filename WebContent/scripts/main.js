@@ -17,7 +17,7 @@ var EXTENSIONS_CLASS = "sfs2x.extensions.games.tris.TrisExtension";
 // ------------------------------------
 var sfs = null;
 
-var currentPrivateChat;
+var currentPrivateChat;	
 var privateChats;
 
 var inGame = false;
@@ -336,6 +336,28 @@ function onDoCreateGameBtClick(event)
 		var isSent = sfs.send(new SFS2X.CreateSFSGameRequest(settings));
 
 		// Close panel
+		if (isSent)
+			$("#createGameWin").jqxWindow("closeWindow");
+	}
+}
+
+function onDoCreateGameByServerBtClick(event)
+{
+	if ($("#gameNameIn").val() != "")
+	{
+		var params = new SFS2X.SFSObject();
+		params.putUtfString("GroupId", GAME_ROOMS_GROUP_NAME);
+		params.putUtfString("ExtensionId",EXTENSION_ID);
+		params.putUtfString("ExtensionClass",EXTENSIONS_CLASS);
+		params.putUtfString("GameName",$("#gameNameIn").val());
+		params.putInt("Spectators",Number($("#spectatorsIn").jqxNumberInput("val")));
+		
+		var isSent = sfs.send(new SFS2X.ExtensionRequest("create", params));
+
+		// Send CreateSFSGame request
+//		var isSent = sfs.send(new SFS2X.CreateSFSGameRequest(settings));
+//
+//		// Close panel
 		if (isSent)
 			$("#createGameWin").jqxWindow("closeWindow");
 	}

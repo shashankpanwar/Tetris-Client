@@ -384,14 +384,14 @@ function showWinnerSecond(cmd, params)
 		if (iAmSpectatorSecond == true)
 		{
 			var pName = this["player" + params.get("w") + "Name"];
-			message = pName + " is the WINNER";
+			message = pName + " is the WINNER with stakes " +params.get("stake") ;
 		}
 		else
 		{
 			if (sfs.mySelf.getPlayerId(lastJoinSecond) == params.get("w"))  // sfs.lastJoinedRoom
 			{
 				// I WON! In the next match, it will be my turn first
-				message = "You are the WINNER!"
+				message = "You are the WINNER! `Stake is " +params.get("stake")+"`" ;
 			}
 			else
 			{
